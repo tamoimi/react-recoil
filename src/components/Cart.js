@@ -2,6 +2,7 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import { useRecoilValue } from "recoil";
 import { cart } from "../store/atoms";
 import cartState from "../store/selectors";
+import CartButtons from "./CartButton";
 
 const Cart = () => {
   const cartItems = useRecoilValue(cart);
@@ -21,7 +22,7 @@ const Cart = () => {
     <TableBody>
         {cartItems.map((item) => (
             <TableRow key={item.id}>
-                <TableCell>Button</TableCell>
+                <TableCell><CartButtons item={item}/></TableCell>
                 <TableCell>{item.id}</TableCell>
                 <TableCell>{item.price}</TableCell>
                 <TableCell>{item.qty}</TableCell>
