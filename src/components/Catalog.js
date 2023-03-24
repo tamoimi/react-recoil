@@ -7,6 +7,7 @@ import {
   Typography,
   Stack,
 } from "@mui/material";
+import { useAddItem } from "../store/hooks";
 
 const fruits = [
   "apple",
@@ -25,6 +26,8 @@ const fruits = [
 const products = fruits.map((id, index) => ({ id, price: index + 1 }));
 
 const Catalog = () => {
+  const addItem = useAddItem();
+
   return (
     <>
       <Box sx={{ p: 3, display: "flex", flexWrap: "wrap", gap: 3 }}>
@@ -37,7 +40,11 @@ const Catalog = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" variant="contained">
+                <Button
+                  size="small"
+                  variant="contained"
+                  onClick={() => addItem(p)}
+                >
                   Add
                 </Button>
               </CardActions>
